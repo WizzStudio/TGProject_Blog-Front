@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TG-Club</title>
+    <title>标签详情</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
@@ -71,20 +71,22 @@
             </div>
         </div>
         <div class="col-md-7" style="background-color: white;" id="body">
-            <div id="Comment">
-                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;">留言板</h1>
-                <p>更新中.....</p>
+            <div id="showTag">
+                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;" id="tagTitle"></h1>
+                <ul id="showTagList">
+
+                </ul>
+                <hr>
             </div>
-            <br/><br/><br/>
         </div>
     </div>
     <footer>
         <p> TG工作室出品</p>
     </footer>
 
-
 </div>
 </body>
 <script>
+    asyncRequest("GET",sessionStorage.getItem('showTagUrl'),showTag,'test');
 </script>
 </html>

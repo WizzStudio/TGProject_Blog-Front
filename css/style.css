@@ -88,7 +88,32 @@ body{
         }
 
     #body img{
-        width: 400px;
+        width: 40vw;
+    }
+    ul{
+        list-style: none!important;
+    }
+    #tagList li{
+        color: #23527c;
+        cursor: pointer;
+    }
+    #nav-header{
+        background-color: #222;
+        margin-top: -1px;
+    }
+    #navTitle{
+        color: white;
+        font-weight: bold;
+    }
+    #title{
+        background-color: black;
+    }
+    #nullLiFirst{
+        background-color: white!important;
+    }
+    #nullLiLast{
+        background-color: white;
+        height: 20px;
     }
 @media screen and (max-width: 992px){
     #body{

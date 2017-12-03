@@ -11,21 +11,20 @@ var addArticle = (function(){
 		var buttonDiv = document.createElement('div');
 		var button = document.createElement('button');
 		var hr = document.createElement('hr');
-		var showArticleUrl = url + '/'+ source.id;
-
+		let showArticleUrl = url + '/'+ source.id;
 		title.innerHTML = source.name;
 		title.classList.add('centerPosition');
 		artcle.appendChild(title);
 
 		infoViews.innerHTML = "阅读量:" + source.view;
-		infoCatolog.innerHTML = "&emsp;"+"类别:" + "Web前端" + "&emsp;";
+		infoCatolog.innerHTML = "&emsp;"+"类别:" + source.tag.name + "&emsp;";
 		infoCatolog.addEventListener('click',function(){
 			asyncRequest("GET",showArticleUrl,showArticle,'test');
 			//将id存在sessction中，点击后加载分类栏下的信息
 		});
 
 
-		infoAuthor.innerHTML = "作者:" + "杨航";
+		infoAuthor.innerHTML = "作者:" + source.user.name;
 		infoAuthor.addEventListener('click',function(){
 			alert("前往作者");
 			//将作者id存在sessition中，点击后加载作者信息
@@ -70,6 +69,7 @@ var addArticle = (function(){
 		sessionStorage.setItem('first_page_url',source.first_page_url);
 		sessionStorage.setItem('last_page_url',source.last_page_url);
 	}
+
 	return function(o,url){
 		var source = JSON.parse(o.responseText);
 		var counts = source.per_page;

@@ -4,9 +4,11 @@
 index.html: 博客主页 && 归档<br/>
 team.html: 团队介绍页<br/>
 showArticle.html: 文章详情页<br/>
-comment.html: 留言板页<br/>
-tag.html: 标签页<br/>
-catalog.html: 分类页<br/>
+comment.html: 留言板<br/>
+tag.html: 标签<br/>
+showTag.html: 标签主页<br/>
+author.html: 作者<br/>
+showAuthor.html: 作者主页<br/>
 <br/><br/>
 后端部分由[DenverBYF](https://github.com/DenverBYF)完成
 
