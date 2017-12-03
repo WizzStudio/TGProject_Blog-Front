@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Catalog</title>
+    <title>Authors</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
@@ -16,6 +16,8 @@
     <script src="js/showTag.js"></script>
     <script src="js/showArticle.js"></script>
     <script src="js/response.js"></script>
+    <script src="js/author.js"></script>
+    <script src="js/showAuthor.js"></script>
     <script src="js/getXHR.js"></script>
 </head>
 <body>
@@ -72,20 +74,22 @@
         </div>
         <div class="col-md-7" style="background-color: white;" id="body">
             <div id="Catalog">
-                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;">Catalogs</h1>
+                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;">Authors(完善中...)</h1>
                 <hr>
-                <p>更新中。。。。</p>
+                <ul id="authorList">
+
+                </ul>
             </div>
             <br/>
             <br/>
+            <hr>
+            <p class="centerPosition"> TG工作室出品</p>
         </div>
     </div>
-    <footer>
-        <p> TG工作室出品</p>
-    </footer>
-
-
 </div>
 </body>
+<script>
+    asyncRequest("GET","http://blog.helloyzy.cn/users",showAuthor,"test");
+</script>
 
 </html>

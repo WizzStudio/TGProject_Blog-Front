@@ -37,7 +37,7 @@ var asyncRequest = (function(){
 		var http = getXHR();
 		http.open(method,url,true);
 		handleReadyState(http,callback,url);
-		http.send(postData || '');
+		http.send(postData || null);
 		return http;
 	}
 })();

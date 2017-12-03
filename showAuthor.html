@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tag</title>
+    <title>Author</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
@@ -73,12 +73,20 @@
             </div>
         </div>
         <div class="col-md-7" style="background-color: white;" id="body">
-            <div id="Tag">
-                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;">Tags(完善中...)</h1>
+            <div id="Catalog">
+                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;">Author(完善中...)</h1>
                 <hr>
-                <ul id="tagList">
-
+                <ul id="authorInfoList">
+                    <li class="centerPosition">个人资料</li>
+                    <br/>
                 </ul>
+                <br>
+                <hr>
+                <ul id="authorArticlesList">
+                    <li class="centerPosition">文章列表</li>
+                    <br/>
+                </ul>
+                <br>
             </div>
             <br/>
             <br/>
@@ -90,6 +98,7 @@
 </div>
 </body>
 <script>
-    asyncRequest("GET","http://blog.helloyzy.cn/tags",showTag,"test");
+    asyncRequest("GET",sessionStorage.getItem('showAuthorUrl'),showAuthorMore,"test");
 </script>
+
 </html>

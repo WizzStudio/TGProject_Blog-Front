@@ -1,7 +1,7 @@
 body{
             background-image: url(../imgs/background2.JPG);
             background-size: cover;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
         }
         .menu{
             list-style: none;
@@ -93,7 +93,7 @@ body{
     ul{
         list-style: none!important;
     }
-    #tagList li{
+    #tagList li,#authorList li{
         color: #23527c;
         cursor: pointer;
     }
@@ -115,6 +115,29 @@ body{
         background-color: white;
         height: 20px;
     }
+    #showTagList span{
+        cursor: pointer!important;
+    }
+    #showArticle span{
+        font-size: 18px;
+    }
+    #showTagList{
+        font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
+        font-size: 30px;
+    }
+    #showTagList li{
+        padding-top: 30px;
+    }
+    #authorInfoList li,#authorArticlesList li{
+        font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
+        font-size: 18px;
+        padding-top: 15px;
+    }
+    small span{
+        cursor: pointer;;
+    }
+
+
 @media screen and (max-width: 992px){
     #body{
         margin-top: 50px!important;

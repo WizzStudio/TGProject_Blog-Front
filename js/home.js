@@ -11,22 +11,27 @@ var addArticle = (function(){
 		var buttonDiv = document.createElement('div');
 		var button = document.createElement('button');
 		var hr = document.createElement('hr');
+		var space = document.createElement('br');
 		let showArticleUrl = url + '/'+ source.id;
+		let showAuthorUrl =  "http://blog.helloyzy.cn/users/" + source.user_id;
+		let showTagUrl = "http://blog.helloyzy.cn/tags/" + source.tag_id;
 		title.innerHTML = source.name;
 		title.classList.add('centerPosition');
 		artcle.appendChild(title);
 
-		infoViews.innerHTML = "阅读量:" + source.view;
+		infoViews.innerHTML = "&emsp;" + "阅读量:" + source.view;
 		infoCatolog.innerHTML = "&emsp;"+"类别:" + source.tag.name + "&emsp;";
 		infoCatolog.addEventListener('click',function(){
-			asyncRequest("GET",showArticleUrl,showArticle,'test');
-			//将id存在sessction中，点击后加载分类栏下的信息
+			sessionStorage.setItem('showTagUrl',showTagUrl);
+			location.href = 'showTag.html';
+			//将id存在sessction中，点击后加载标签栏下的信息
 		});
 
 
 		infoAuthor.innerHTML = "作者:" + source.user.name;
 		infoAuthor.addEventListener('click',function(){
-			alert("前往作者");
+			sessionStorage.setItem('showAuthorUrl',showAuthorUrl);
+			location.href = "showAuthor.html";
 			//将作者id存在sessition中，点击后加载作者信息
 		})
 
@@ -45,6 +50,9 @@ var addArticle = (function(){
 		button.innerHTML = "阅读全文>>>";
 		button.classList.add('btn','btn-default');
 		button.addEventListener('click',function(){
+			sessionStorage.setItem('author',source.user.name);
+			sessionStorage.setItem('view',source.view);
+			sessionStorage.setItem('tagName',source.tag.name);
 			sessionStorage.setItem('showArticleUrl',showArticleUrl);
 			location.href = 'showArticle.html';
 		});
@@ -53,6 +61,7 @@ var addArticle = (function(){
 
 		artcle.appendChild(title);
 		artcle.appendChild(info);
+		artcle.appendChild(space);
 		artcle.appendChild(content);
 		artcle.appendChild(buttonDiv);
 		artcle.appendChild(hr);

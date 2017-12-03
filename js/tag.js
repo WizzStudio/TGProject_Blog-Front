@@ -3,10 +3,11 @@ var showTag = (function(){
 		var kind = document.createElement('div');
 		var li = document.createElement('li');
 		var tagName = document.createElement('h4');
+		let showTagUrl = url + '/' + source.id;
 
 		tagName.innerHTML = source.name;
 		tagName.addEventListener('click',function(){
-			sessionStorage.setItem('ShowTagUrl',url + source.id);
+			sessionStorage.setItem('showTagUrl',showTagUrl);
 			location.href = 'showTag.html';
 		});
 		li.appendChild(tagName);
@@ -16,7 +17,7 @@ var showTag = (function(){
 			var source = JSON.parse(o.responseText);
 			var counts = source.length;
 			for(let i = 0; i < counts; i++){
-				addTagNode(source[i]);
+				addTagNode(source[i],url);
 			}
 		}
 })();

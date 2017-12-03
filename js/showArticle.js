@@ -9,25 +9,27 @@ var showArticle = (function(){
 		var infoAuthor = document.createElement('span');
 		var content = document.createElement('div');
 		var hr = document.createElement('hr');
+		let showAuthorUrl =  "http://blog.helloyzy.cn/users/" + source.user_id;
+		let showTagUrl = "http://blog.helloyzy.cn/tags/" + source.tag_id;
 
-
+		
 		title.innerHTML = source.name;
 		title.classList.add('centerPosition');
 		artcle.appendChild(title);
 
 
-		infoViews.innerHTML = + " 阅读量:" + source.view;
-		infoCatolog.innerHTML = "&emsp;"+"类别:" + "Web前端" + "&emsp;";
+		infoViews.innerHTML =  "阅读量:" + sessionStorage.getItem('view');
+		infoCatolog.innerHTML = "&emsp;"+"标签:" + sessionStorage.getItem('tagName') + "&emsp;";
 		infoCatolog.addEventListener('click',function(){
-			//将id存在sessction中，点击后加载分类栏下的信息
+			sessionStorage.setItem('showTagUrl','http://blog.helloyzy.cn/tags/' + source.tag_id);
+			location.href = "showTag.html";
 		});
 
-
-
-		alert(source.user);
-		infoAuthor.innerHTML = "作者:"  + "&emsp;";
+		var authorName = sessionStorage.getItem('author') || '暂无数据';
+		infoAuthor.innerHTML = "作者:"  + authorName+ "&emsp;";
 		infoAuthor.addEventListener('click',function(){
-			alert("前往作者");
+			sessionStorage.setItem('showAuthorUrl',showAuthorUrl);
+			location.href = "showAuthor.html";
 			//将作者id存在sessition中，点击后加载作者信息
 		})
 
