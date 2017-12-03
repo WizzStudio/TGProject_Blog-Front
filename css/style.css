@@ -1,0 +1,97 @@
+body{
+            background-image: url(../imgs/background2.JPG);
+            background-size: cover;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .menu{
+            list-style: none;
+            width: 288px;
+            font-size: 16px;
+        }
+        .menu li{
+            background-color: #ffffff;
+            line-height: 2.4em;
+            margin-left: -2px;
+        }
+        .menu li:hover{
+            background-color: #eaeaea;
+            line-height: 2.4em;
+            margin-left: -2px;
+        }
+        .menu a:link{
+            color: #555;
+            text-decoration: none;
+        }
+        .menu a:visited{
+            color: #000;
+            text-decoration: none;
+        }
+        .menu a:hover,.menu a:focus{
+            color:#000;
+            text-decoration: none;
+        }
+        #title{
+            background-color: #222 !important;
+            margin-left: 38px;
+            width: 250px;
+            padding-top: 5px;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+        #title small{
+            color: #ddd;
+            font-size: 18px;
+        }
+        #title h3 a{
+            text-decoration: none;
+            color: white;
+        }
+        .main{
+            background-color: white;
+        }
+        .text h4,.text small{
+            text-align: center;
+        }
+        .text{
+            padding: 15px;
+            font-size: 16px;
+            font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
+        }
+        footer{
+            text-align: center;
+        }
+        .centerPosition{
+            text-align: center;
+        }
+        .rightPosition{
+            text-align: right;
+        }
+        #articles{
+            font-size: 16px;
+            font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
+        }
+        #articles small{
+            display: block;
+            text-align: center;
+        }
+        #articles h1{
+            font-size: 18px!important;
+            font-weight: bold;
+        }
+        button a:link,button a:visited,button a:hover,button a:focus{
+            text-decoration: none !important;
+        }
+        #minNav{
+            background-color: #222!important;
+            color: white!important;
+            border-color: #222!important;
+        }
+
+    #body img{
+        width: 400px;
+    }
+@media screen and (max-width: 992px){
+    #body{
+        margin-top: 50px!important;
+    }
+}
