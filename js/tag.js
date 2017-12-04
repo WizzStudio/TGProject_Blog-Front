@@ -2,7 +2,7 @@ var showTag = (function(){
 	function addTagNode(source,url){
 		var kind = document.createElement('div');
 		var li = document.createElement('li');
-		var tagName = document.createElement('h4');
+		var tagName = document.createElement('h3');
 		let showTagUrl = url + '/' + source.id;
 
 		tagName.innerHTML = source.name;

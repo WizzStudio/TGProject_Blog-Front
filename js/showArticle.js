@@ -2,10 +2,14 @@ var showArticle = (function(){
 	function showArticleNode(source){
 		var artcle = document.createElement('div');	//文章
 		var title = document.createElement('h1');	//文章标题
-		var info = document.createElement('small');	//文章信息
+		var info = document.createElement('div');	//文章信息
 		var infoTime = document.createElement('span');
 		var infoViews = document.createElement('span');
 		var infoCatolog = document.createElement('span');
+		var infoAuthorMore  = document.createElement('a');
+		var infoCatologMore = document.createElement('a');
+
+
 		var infoAuthor = document.createElement('span');
 		var content = document.createElement('div');
 		var hr = document.createElement('hr');
@@ -17,23 +21,28 @@ var showArticle = (function(){
 		title.classList.add('centerPosition');
 		artcle.appendChild(title);
 
+		infoCatologMore.innerHTML = sessionStorage.getItem('tagName') || 'fuckError';
+		infoAuthorMore.innerHTML = sessionStorage.getItem('author') || 'fuckError';
+		infoViews.innerHTML =  "&emsp;" + "阅读量:" + sessionStorage.getItem('view');
+		infoCatolog.innerHTML = "&emsp;"+"标签: ";
+		infoCatolog.appendChild(infoCatologMore);
 
-		infoViews.innerHTML =  "阅读量:" + sessionStorage.getItem('view');
-		infoCatolog.innerHTML = "&emsp;"+"标签:" + sessionStorage.getItem('tagName') + "&emsp;";
-		infoCatolog.addEventListener('click',function(){
+		infoCatologMore.addEventListener('click',function(){
 			sessionStorage.setItem('showTagUrl','http://blog.helloyzy.cn/tags/' + source.tag_id);
 			location.href = "showTag.html";
 		});
 
-		var authorName = sessionStorage.getItem('author') || '暂无数据';
-		infoAuthor.innerHTML = "作者:"  + authorName+ "&emsp;";
-		infoAuthor.addEventListener('click',function(){
+		infoAuthor.innerHTML = "&emsp;" + "作者: ";
+		infoAuthor.appendChild(infoAuthorMore);
+		infoAuthorMore.addEventListener('click',function(){
 			sessionStorage.setItem('showAuthorUrl',showAuthorUrl);
 			location.href = "showAuthor.html";
 			//将作者id存在sessition中，点击后加载作者信息
 		})
-
+		infoAuthorMore.classList.add('info');
+		infoCatologMore.classList.add('info');
 		infoTime.innerHTML = "发表于: " + source.created_at;
+		info.classList.add('centerPosition');
 		info.appendChild(infoTime);
 		info.appendChild(infoViews);
 		info.appendChild(infoCatolog);

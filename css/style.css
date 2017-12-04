@@ -70,10 +70,6 @@ body{
             font-size: 16px;
             font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
         }
-        #articles small{
-            display: block;
-            text-align: center;
-        }
         #articles h1{
             font-size: 18px!important;
             font-weight: bold;
@@ -96,6 +92,8 @@ body{
     #tagList li,#authorList li{
         color: #23527c;
         cursor: pointer;
+        font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
+        font-size: 30px!important;
     }
     #nav-header{
         background-color: #222;
@@ -115,29 +113,36 @@ body{
         background-color: white;
         height: 20px;
     }
-    #showTagList span{
-        cursor: pointer!important;
-    }
     #showArticle span{
-        font-size: 18px;
+        font-size: 16px;
     }
     #showTagList{
         font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
-        font-size: 30px;
+        font-size: 30px!important;
     }
     #showTagList li{
-        padding-top: 30px;
+        color: #23527c;
+        padding-top: 20px;
+        cursor: pointer;;
+    }
+    #tagList li{
+        font-size: 23px;
     }
     #authorInfoList li,#authorArticlesList li{
         font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
         font-size: 18px;
         padding-top: 15px;
     }
-    small span{
-        cursor: pointer;;
+    .info{
+        text-decoration: none!important;
+        cursor: pointer!important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px!important;
     }
-
-
+    #team div{
+        font-family: "冬青黑体简体中文", "微软雅黑", "宋体", Arial, sans-serif;
+        font-size: 18px;
+    }
 @media screen and (max-width: 992px){
     #body{
         margin-top: 50px!important;

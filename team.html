@@ -19,6 +19,9 @@
     <script src="js/author.js"></script>
     <script src="js/showAuthor.js"></script>
     <script src="js/getXHR.js"></script>
+    <script src="js/team.js"></script>
+    <style type="text/css">
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="minNav">
@@ -73,63 +76,22 @@
             </div>
         </div>
         <div class="col-md-7" style="background-color: white;text-align: center!important;" id="body">
-            <div id="team">
-                <h1>ABOUT US(差不多...)</h1>
+            <div>
+                <h1 style="text-align: center;font-size: 30px!important;padding-top: 15px;">团队介绍</h1>
                 <hr>
-                <br/>
-                <br/>
-                <img src="" id="teamImg" class="img-circle">
-                <h3 id="name"></h3>
-                <p id="desc"></p>
-                <br/>
-                <p style="text-align: left;">
-                    团队主页:&emsp;<a id="website" href=""></a>
-                </p>
-                <p style="text-align: left;">
-                    团队github地址:&emsp;<a id="github" href=""></a>
-                </p>
-                <p style="text-align: left">
-                    西电官网:&emsp;<a id="xdu" href=""></a>
-                </p>
-                <br/>
-                <br/>
-                <hr>
-                <p class="centerPosition">TG工作室出品</p>
+                <div id="team">
+
+                </div>
             </div>
+            <h1></h1>
         </div>
+        <hr>
+        <p class="centerPosition">TG工作室出品</p>
     </div>
-
-
 </div>
 
 <script>
-    window.onload = function(){
-        var xmlHttp;
-        if(window.XMLHttpRequest){
-            xmlHttp = new XMLHttpRequest();
-        } else if(window.ActiveXObject){
-            xmlHttp = new ActiveXObject('')
-        }
-        xmlHttp.onreadystatechange = function () {
-            if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
-                let response = JSON.parse(xmlHttp.responseText);
-                let img = document.getElementById('teamImg');
-                img.src  = response.url;
-                let name = document.getElementById('name');
-                name.innerHTML = response.name;
-                let desc = document.getElementById('desc');
-                desc.innerHTML = response.desc;
-                let github = document.getElementById('github');
-                github.href = response.github;
-                github.innerHTML = response.github;
-                let website = document.getElementById('website');
-                website.href = response.website;
-                website.innerHTML = response.website;
-            }
-        }
-        xmlHttp.open('GET','http://blog.helloyzy.cn/team',true);
-        xmlHttp.send();
-    }
+    asyncRequest("GET","http://blog.helloyzy.cn/team",showTeam,'test');
 </script>
 </body>
 

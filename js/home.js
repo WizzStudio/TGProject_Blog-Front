@@ -2,9 +2,11 @@ var addArticle = (function(){
 	function addArticleNode(source,url){
 		var artcle = document.createElement('div');	//文章
 		var title = document.createElement('h2');	//文章标题
-		var info = document.createElement('small');	//文章信息
+		var info = document.createElement('div');	//文章信息
 		var infoTime = document.createElement('span');
 		var infoViews = document.createElement('span');
+		var infoAuthorMore = document.createElement('a');
+		var infoCatologMore = document.createElement('a');
 		var infoCatolog = document.createElement('span');
 		var infoAuthor = document.createElement('span');
 		var content = document.createElement('div');
@@ -18,17 +20,23 @@ var addArticle = (function(){
 		title.innerHTML = source.name;
 		title.classList.add('centerPosition');
 		artcle.appendChild(title);
+		info.classList.add('centerPosition');
 
-		infoViews.innerHTML = "&emsp;" + "阅读量:" + source.view;
-		infoCatolog.innerHTML = "&emsp;"+"类别:" + source.tag.name + "&emsp;";
-		infoCatolog.addEventListener('click',function(){
+		infoViews.innerHTML = "&emsp;" + "阅读量:&emsp;" + source.view;
+		infoCatolog.innerHTML = "&emsp;"+"类别:"  + "&emsp;";
+		infoCatologMore.innerHTML = source.tag.name;
+		infoAuthorMore.classList.add('info');
+		infoCatologMore.classList.add('info');
+		infoCatolog.appendChild(infoCatologMore);
+		infoCatologMore.addEventListener('click',function(){
 			sessionStorage.setItem('showTagUrl',showTagUrl);
 			location.href = 'showTag.html';
 			//将id存在sessction中，点击后加载标签栏下的信息
 		});
 
-
-		infoAuthor.innerHTML = "作者:" + source.user.name;
+		infoAuthorMore.innerHTML = source.user.name;
+		infoAuthor.innerHTML = "&emsp;" + "作者:";
+		infoAuthor.appendChild(infoAuthorMore);
 		infoAuthor.addEventListener('click',function(){
 			sessionStorage.setItem('showAuthorUrl',showAuthorUrl);
 			location.href = "showAuthor.html";
@@ -83,7 +91,7 @@ var addArticle = (function(){
 		var source = JSON.parse(o.responseText);
 		var counts = source.per_page;
 		setPageUrl(source);
-		for(let i = 0; i < counts; i++){
+		for(let i = counts - 1; i >= 0; i--){
 			addArticleNode(source.data[i],url);
 		}
 	}
