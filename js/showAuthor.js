@@ -1,9 +1,9 @@
 var showAuthorMore = (function(){
 	function showMoreInfo(source){
-		var authorName = document.createElement('li');
-		var authorEmail= document.createElement('li');
-		var authorUrl = document.createElement('li');
-		var authorGithub = document.createElement('li');
+		var authorName = document.createElement('div');
+		var authorEmail= document.createElement('div');
+		var authorUrl = document.createElement('div');
+		var authorGithub = document.createElement('div');
 
 		authorName.innerHTML = source.name;
 		authorEmail.innerHTML = "Email:" + "&emsp;" + source.email;
@@ -21,8 +21,8 @@ var showAuthorMore = (function(){
 
 	function showMoreArticles(source){
 		var authorArticlesList = document.getElementById('authorArticlesList');
-		var articleName = document.createElement('li');
-		var articleTag = document.createElement('li');
+		var articleName = document.createElement('div');
+		var articleTag = document.createElement('div');
 		var space = document.createElement('br');
 		articleTag.innerHTML = "Tag:&emsp;" + source.tag.name;
 		articleName.innerHTML = "Name:&emsp;" + source.name;

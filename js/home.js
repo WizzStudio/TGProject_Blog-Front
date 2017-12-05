@@ -1,7 +1,7 @@
 var addArticle = (function(){
 	function addArticleNode(source,url){
 		var artcle = document.createElement('div');	//文章
-		var title = document.createElement('h2');	//文章标题
+		var title = document.createElement('h4');	//文章标题
 		var info = document.createElement('div');	//文章信息
 		var infoTime = document.createElement('span');
 		var infoViews = document.createElement('span');
@@ -35,7 +35,7 @@ var addArticle = (function(){
 		});
 
 		infoAuthorMore.innerHTML = source.user.name;
-		infoAuthor.innerHTML = "&emsp;" + "作者:";
+		infoAuthor.innerHTML = "&emsp;" + "作者:" + "&emsp;";
 		infoAuthor.appendChild(infoAuthorMore);
 		infoAuthor.addEventListener('click',function(){
 			sessionStorage.setItem('showAuthorUrl',showAuthorUrl);
@@ -89,7 +89,7 @@ var addArticle = (function(){
 
 	return function(o,url){
 		var source = JSON.parse(o.responseText);
-		var counts = source.per_page;
+		var counts = source.data.length;
 		setPageUrl(source);
 		for(let i = counts - 1; i >= 0; i--){
 			addArticleNode(source.data[i],url);
