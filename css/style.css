@@ -1,5 +1,6 @@
     html{
         min-height: 1000px;
+        font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
 
@@ -21,15 +22,18 @@
         }
         .menu li{
             background-color: #ffffff;
-            line-height: 2.4em;
+            line-height: 2.4;
             color: black!important;
             margin-left: -2px;
             transition: background-color 1.2s;
+            -moz-transition: background-color 1.2s;  /* Firefox 4 */
+            -webkit-transition: background-color 1.2s;   /* Safari 和 Chrome */
+            -o-transition: background-color 1.2s;    /* Opera */
         }
         .menu li:hover{
             color: white!important;
             background-color: #000;
-            line-height: 2.4em;
+            line-height: 2.4;
             margin-left: -2px;
         }
         .menu a:link{
@@ -102,27 +106,36 @@
             font-size: 16px!important;
             color: #555;
             transition: color 1.1s;
-            transition: text;
+            -moz-transition: color 1.1s;  /* Firefox 4 */
+            -webkit-transition: color 1.1s;   /* Safari 和 Chrome */
+            -o-transition: color 1.1s;    /* Opera */
         }
         #showArticle div span a:hover{
             font-size: 16px!important;
             color: #000;
         }
-        #articles h1,#articles h2{
+        #articles h1{
             font-size: 17px!important;
             font-weight: bold;
         }
         button a:link,button a:visited,button a:hover,button a:focus{
             text-decoration: none !important;
         }
+        .navbar-nav{
+            margin: 0px -15px;
+        }
         #minNav{
             background-color: #222;
             opacity: 0.9!important;
             color: white!important;
             border-color: #222!important;
+            height: 50px;
         }
-        #showArticle h3{
-            font-size: 26px;
+        #minNav li{
+            background-color: #222;
+        }
+        #articleTitle{
+            font-size: 24px;
             font-weight: 300!important;
         }
         #showArticle div{
@@ -131,7 +144,7 @@
         }
 
     #body img{
-        width: 200px;
+        width: 300px;
     }
     #body{
         background-color: white;
@@ -163,17 +176,34 @@
         background-color: white;
         height: 20px;
     }
+    #articleBody,#articleBody h2{
+        font-size: 13px!important;
+        line-height: 1.4;
+    }
     #showArticle span{
         font-size: 13px!important;
     }
     #showTagList{
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-        font-size: 25px!important;
+        font-size: 15px!important;
     }
     #showTagList li{
-        color: #23527c;
-        padding-top: 20px;
-        cursor: pointer;;
+        color: #555;
+        padding-top: 15px;
+        cursor: pointer;
+        font-size: 15px;
+        line-height: 2;
+    }
+    span[name='articleTitle'],span[name='articleAuthor']{
+        color: #555;
+    }
+    span[name='articleTitle']:hover,span[name='articleAuthor']:hover{
+        color: black;
+        transition: color 1.1s;
+        -moz-transition: color 1.1s;  /* Firefox 4 */
+        -webkit-transition: color 1.1s;   /* Safari 和 Chrome */
+        -o-transition: color 1.1s;    /* Opera */  
+
     }
     #tagList li{
         font-size: 20px;
@@ -191,7 +221,23 @@
     }
     #team div{
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-        font-size: 16px;
+        font-size: 14px;
+        color: #222;
+        line-height: 2.5;
+    }
+    #team div a:link{
+        color: #555;
+        font-size: 13px!important;
+        line-height: 2;
+        transition: color 1s,font-size 2s;
+        -moz-transition: color 1s,font-size 2s;  /* Firefox 4 */
+        -webkit-transition: color 1s,font-size 2s;   /* Safari 和 Chrome */
+        -o-transition: color 1s,font-size 2s;    /* Opera */
+    }
+    #team div a:hover{
+        line-height: 2;
+        color: #000;
+        font-size: 16px!important;
     }
     #Catalog ul{
         margin: 0px;
@@ -223,7 +269,10 @@
         border: none;
         color: #222;
         cursor: pointer;
-        transition:background 1s;
+         transition:background-color 1s;
+        -moz-transition: background-color 1s;  /* Firefox 4 */
+        -webkit-transition: background-color 1s;   /* Safari 和 Chrome */
+        -o-transition: background-color 1s;    /* Opera */
     }
     #nextPage:hover{
         color: white;
@@ -244,19 +293,30 @@
         cursor: pointer;
     }
     #articles h4{
-        transition-property: color;
         text-decoration: none;
         color: #222;
-        transition: 1.5s;
+
+        transition: color 1.2s;
+        -moz-transition: color 1.2s;  /* Firefox 4 */
+        -webkit-transition: color 1.2s;   /* Safari 和 Chrome */
+        -o-transition: color 1.2s;    /* Opera */  
     }
     #articles h4:hover{
         color: black;
     }
+    #tagTitle{
+        color: #222;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 2;
+    }
     #articels div div span a{
         color: #222;
         text-decoration: none!important;
-        transition-property: color;
-        transition: 1.2s;
+        transition: color 1.2s;
+        -moz-transition: color 1.2s;  /* Firefox 4 */
+        -webkit-transition: color 1.2s;   /* Safari 和 Chrome */
+        -o-transition: color 1.2s;    /* Opera */        
     }
     #articles div div span a:hover{
         color: #000;
@@ -268,9 +328,10 @@
         border-color: black;
         background-color: white;
         visibility: visible;
-        transition: border-color 1.1s;
-        transition: background-color 1.1s;
-        transition: visibility 1.2s;
+        transition: border-color 1.1s,background-color 1.1s,visibility 1.2s;
+        -moz-transition: border-color 1.1s,background-color 1.1s,visibility 1.2s;  /* Firefox 4 */
+        -webkit-transition: border-color 1.1s,background-color 1.1s,visibility 1.2s;   /* Safari 和 Chrome */
+        -o-transition: border-color 1.1s,background-color 1.1s,visibility 1.2s;   /* Opera */  
     }
     #articles button:hover{
         color: white;
@@ -284,8 +345,71 @@
     #body{
         min-height: 800px;
     }
+    #articleContent{
+        line-height: 1.5;
+        font-size: 15px;
+    }
+    #team img{
+        margin-top: -30px;
+        cursor: pointer;
+        width: 225px;
+        line-height: 20;
+        transition: width 1.5s;
+        -moz-transition: width 1.5s;  /* Firefox 4 */
+        -webkit-transition: width 1.5s;   /* Safari 和 Chrome */
+        -o-transition: width 1.5s;    /* Opera */
+    }
+    #team img:hover{
+        margin-top: -30px;
+        cursor: pointer;
+        line-height: 10;
+        width: 285px;
+    }
+    #teamName{
+        font-size: 27px!important;
+        font-weight: 300!important;
+        color: #222!important;
+    }
+    #totalTag{
+        font-size: 12px;
+        color: #555;
+        line-height: 3;
+    }
+    #tagCount{
+        color: inherit;
+    }
+    span[name='tags']{
+        font-size: 14px;
+        color: #555;
+        font-weight: 300px;
+        line-height: 2;
+        cursor: pointer;
+        transition: color 0.5s;
+        -moz-transition: color 0.5s;  /* Firefox 4 */
+        -webkit-transition: color 0.5s;   /* Safari 和 Chrome */
+        -o-transition: color 0.5s;    /* Opera */
+    }
+    span[name='tags']:hover{
+        font-size: 14px;
+        color: #111;
+        font-weight: 300px;
+        line-height: 2;
+        cursor: pointer;
+    
+    }
+    #firstTag{
+        font-weight: 600;
+        line-height: 2;
+        color: #222;
+        font-size: 22px;
+    }
+    
 @media screen and (max-width: 992px){
-    #body div{
+    #body div:nth-child(1){
         margin-top: 50px!important;
+    }
+    #articleTitle{
+        margin-top: 50px!important;
+        padding-top: 15px;
     }
 }

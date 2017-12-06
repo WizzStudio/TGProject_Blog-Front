@@ -84,13 +84,8 @@
 </div>
 </body>
 <script>
-    document.getElementById('nextPage').addEventListener('click',function () {
-        asyncRequest("GET",sessionStorage.getItem('next_page_url'),addArticle,"test");
-    });
 
-    document.getElementById('prevPage').addEventListener('clock',function () {
-        asyncRequest("GET",sessionStorage.getItem('prev_page_url'),addArticle,"test");
-    });
+
    app.asyncRequest("GET","http://blog.helloyzy.cn/articles",app.addArticle,"test");
 </script>
 </html>

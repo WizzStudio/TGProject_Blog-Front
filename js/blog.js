@@ -43,12 +43,16 @@ var app = (function(){
 	})();
 	var addArticle = (function(){
 		function addArticleNode(source,url){
-			var artcle = document.createElement('div');	//文章
+			var article = document.createElement('div');	//文章
 			var title = document.createElement('h4');	//文章标题
 			var info = document.createElement('div');	//文章信息
 			var infoTime = document.createElement('span');
+			var infoTimeIcon = document.createElement('i');
+			var infoTimeMore = document.createElement('span');
 			var infoViews = document.createElement('span');
 			var infoAuthorMore = document.createElement('a');
+			var infoCatologIcon = document.createElement('i');
+			var infoAuthorMore  = document.createElement('a');
 			var infoCatologMore = document.createElement('a');
 			var infoCatolog = document.createElement('span');
 			var infoAuthor = document.createElement('span');
@@ -62,14 +66,15 @@ var app = (function(){
 			let showTagUrl = "http://blog.helloyzy.cn/tags/" + source.tag_id;
 			title.innerHTML = source.name;
 			title.classList.add('centerPosition');
-			artcle.appendChild(title);
+			article.appendChild(title);
 			info.classList.add('centerPosition');
 
 			infoViews.innerHTML = "&emsp;" + "阅读量:&emsp;" + source.view;
-			infoCatolog.innerHTML = "&emsp;"+"类别:"  + "&emsp;";
 			infoCatologMore.innerHTML = source.tag.name;
+			infoCatologIcon.classList.add('fa','fa-fw','fa-tags');
 			infoAuthorMore.classList.add('info');
 			infoCatologMore.classList.add('info');
+			infoCatolog.appendChild(infoCatologIcon);
 			infoCatolog.appendChild(infoCatologMore);
 			infoCatologMore.addEventListener('click',function(){
 				sessionStorage.setItem('showTagUrl',showTagUrl);
@@ -85,8 +90,10 @@ var app = (function(){
 				location.href = "showAuthor.html";
 				//将作者id存在sessition中，点击后加载作者信息
 			});
-
-			infoTime.innerHTML = "发表于: " + source.created_at + "&emsp;";
+			infoTimeIcon.classList.add('fa','fa-fw','fa-calendar-o');
+			infoTimeMore.innerHTML = source.created_at.substring(0,11) + "&emsp;";
+			infoTime.appendChild(infoTimeIcon);
+			infoTime.appendChild(infoTimeMore);
 			info.appendChild(infoTime);
 			info.appendChild(infoViews);
 			info.appendChild(infoCatolog);
@@ -100,6 +107,7 @@ var app = (function(){
 
 			button.innerHTML = "阅读全文>>>";
 			button.classList.add('btn','btn-default');
+			content.setAttribute('id','articleBody');
 
 			button.addEventListener('click',function(){
 				sessionStorage.setItem('author',source.user.name);
@@ -114,17 +122,17 @@ var app = (function(){
 			buttonDiv.appendChild(button);
 			buttonDiv.style.textAlign = "right";
 
-			artcle.appendChild(title);
-			artcle.appendChild(info);
-			artcle.appendChild(space);
-			artcle.appendChild(content);
-			artcle.appendChild(buttonDiv);
-			artcle.appendChild(hr);
+			article.appendChild(title);
+			article.appendChild(info);
+			article.appendChild(space);
+			article.appendChild(content);
+			article.appendChild(buttonDiv);
+			article.appendChild(hr);
 
 			if(document.getElementById('articles')){
-				document.getElementById('articles').appendChild(artcle);
+				document.getElementById('articles').appendChild(article);
 			} else if(document.getElementById('showContent')){
-				document.getElementById('showContent').appendChild(artcle);
+				document.getElementById('showContent').appendChild(article);
 			}
 		}
 		function setPageUrl(source){
@@ -145,7 +153,7 @@ var app = (function(){
 	})();
 	var showArticle = (function(){
 		function showArticleNode(source){
-			var artcle = document.createElement('div');	//文章
+			var article = document.createElement('div');	//文章
 			var title = document.createElement('h3');	//文章标题
 			var info = document.createElement('div');	//文章信息
 			var infoTime = document.createElement('span');
@@ -158,7 +166,8 @@ var app = (function(){
 			var infoAuthorMore  = document.createElement('a');
 			var infoCatologMore = document.createElement('a');
 
-
+			article.setAttribute('id','articleContent');
+			title.setAttribute('id','articleTitle');
 			var infoAuthor = document.createElement('span');
 			var content = document.createElement('div');
 			var hr = document.createElement('hr');
@@ -168,7 +177,7 @@ var app = (function(){
 			infoCatologIcon.classList.add('fa','fa-fw','fa-tags');
 			title.innerHTML = source.name;
 			title.classList.add('centerPosition');
-			artcle.appendChild(title);
+			article.appendChild(title);
 
 			infoCatologMore.innerHTML = sessionStorage.getItem('tagName') || 'fuckError';
 			infoAuthorMore.innerHTML = sessionStorage.getItem('author') || 'fuckError';
@@ -190,8 +199,8 @@ var app = (function(){
 			});
 			infoAuthorMore.classList.add('info');
 			infoCatologMore.classList.add('info');
-			infoTimeMore.innerHTML = source.created_at + "&emsp;";
-			infoTimeIcon.classList.add('fa','fa-calendar-o');
+			infoTimeMore.innerHTML = source.created_at.substring(0,11) + "&emsp;";
+			infoTimeIcon.classList.add('fa','fa-fw','fa-calendar-o');
 			infoTime.appendChild(infoTimeIcon);
 			infoTime.appendChild(infoTimeMore);
 
@@ -208,12 +217,12 @@ var app = (function(){
 			content.innerHTML = contentBody;
 		
 
-			artcle.appendChild(title);
-			artcle.appendChild(info);
-			artcle.appendChild(hr);
-			artcle.appendChild(content);
+			article.appendChild(title);
+			article.appendChild(info);
+			article.appendChild(hr);
+			article.appendChild(content);
 
-			document.getElementById('showArticle').appendChild(artcle);	
+			document.getElementById('showArticle').appendChild(article);	
 		}
 
 		return function(o){
@@ -286,25 +295,33 @@ var app = (function(){
 		}
 	})();
 	var showTag = (function(){
-		function addTagNode(source,url){
+		function addTagNode(source,url,tagCount,index){
 			var kind = document.createElement('div');
-			var li = document.createElement('li');
-			var tagName = document.createElement('h3');
+			var li = document.createElement('span');
+			var space = document.createElement('i');
+			space.innerHTML = "&emsp;&emsp;"
+			li.setAttribute('name','tags');
+			var tagName = document.createElement('span');
 			let showTagUrl = url + '/' + source.id;
 
 			tagName.innerHTML = source.name;
+			if(index === 0){
+				li.setAttribute('id','firstTag');
+			}
+			document.getElementById('tagCount').innerHTML = tagCount;
 			tagName.addEventListener('click',function(){
 				sessionStorage.setItem('showTagUrl',showTagUrl);
 				location.href = 'showTag.html';
 			});
 			li.appendChild(tagName);
+			li.appendChild(space);
 			document.getElementById('tagList').appendChild(li);
 		}
 		return function(o,url){
 				var source = JSON.parse(o.responseText);
 				var counts = source.length;
 				for(let i = 0; i < counts; i++){
-					addTagNode(source[i],url);
+					addTagNode(source[i],url,counts,i);
 				}
 			}
 	})();
@@ -322,7 +339,8 @@ var app = (function(){
 			var showArticleUrl = "http://blog.helloyzy.cn/articles/" + source.id;
 			var showAuthorUrl = "http://blog.helloyzy.cn/users/" + source.user.id;
 
-
+			articleAhthor.setAttribute('name','articleAuthor');
+			articleTitle.setAttribute('name','articleTitle');
 			articleAhthor.innerHTML =source.user.name + "&emsp;";
 			articleTitle.innerHTML = "《" + source.name + "》";
 
@@ -351,7 +369,8 @@ var app = (function(){
 	})();
 	var showTeam = (function(){
 		function addTeamNode(source,url){
-			var name = document.createElement('h3');
+			var name = document.createElement('h2');
+			name.setAttribute('id','teamName');
 			name.innerHTML = source.name;	//团队名称
 			var desc = document.createElement('div');
 			var github = document.createElement('div');
