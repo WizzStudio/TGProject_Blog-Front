@@ -45,20 +45,26 @@
             text-decoration: none;
         }
         #title{
-            background-color: #222 !important;
+            background-color: #222!important;
+            color: white;
             margin-left: 38px;
             width: 250px;
             padding-top: 5px;
             padding-bottom: 30px;
             text-align: center;
         }
+        #title:hover{
+            background-color: black;
+            color: white;
+        }
         #title small{
-            color: #ddd;
+            color: inherit;
             font-size: 14px;
+            cursor: pointer;
         }
         #title h3 a{
             text-decoration: none;
-            color: white;
+            color: inherit;
         }
         .main{
             background-color: white;
@@ -88,7 +94,20 @@
             font-size: 12px!important;
             color: #999;
         }
-
+        #showArticle div span{
+            font-size: 14px!important;
+            color: #999;
+        }
+        #showArticle div span a{
+            font-size: 16px!important;
+            color: #555;
+            transition: color 1.1s;
+            transition: text;
+        }
+        #showArticle div span a:hover{
+            font-size: 16px!important;
+            color: #000;
+        }
         #articles h1,#articles h2{
             font-size: 17px!important;
             font-weight: bold;
@@ -97,13 +116,22 @@
             text-decoration: none !important;
         }
         #minNav{
-            background-color: #222!important;
+            background-color: #222;
+            opacity: 0.9!important;
             color: white!important;
             border-color: #222!important;
         }
+        #showArticle h3{
+            font-size: 26px;
+            font-weight: 300!important;
+        }
+        #showArticle div{
+            font-size: 14px;
+            color: #555;
+        }
 
     #body img{
-        width: 30vw;
+        width: 200px;
     }
     #body{
         background-color: white;
@@ -136,7 +164,7 @@
         height: 20px;
     }
     #showArticle span{
-        font-size: 16px;
+        font-size: 13px!important;
     }
     #showTagList{
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -156,7 +184,6 @@
         padding-top: 15px;
     }
     .info{
-        text-decoration: underline!important;
         color: #555;
         cursor: pointer!important;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -174,7 +201,7 @@
         font-size: 14px;
     }
     #articles h4{
-        color: #555;
+        color: #555!important;
     }
     #currentPage{
         color: white;
@@ -240,16 +267,25 @@
     #articles button{
         border-color: black;
         background-color: white;
-        transition: border-color 1.5s;
-        transition: background-color 1.5s;
+        visibility: visible;
+        transition: border-color 1.1s;
+        transition: background-color 1.1s;
+        transition: visibility 1.2s;
     }
     #articles button:hover{
         color: white;
         border-color: white;
         background-color: black;
     }
+    #articles button:active{
+        border-color: white;
+        visibility: hidden;
+    }
+    #body{
+        min-height: 800px;
+    }
 @media screen and (max-width: 992px){
-    #body div h1{
+    #body div{
         margin-top: 50px!important;
     }
 }

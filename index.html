@@ -11,14 +11,7 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/showdown.js"></script>
-    <script src="js/home.js"></script>
-    <script src="js/tag.js"></script>
-    <script src="js/showTag.js"></script>
-    <script src="js/showArticle.js"></script>
-    <script src="js/response.js"></script>
-    <script src="js/author.js"></script>
-    <script src="js/showAuthor.js"></script>
-    <script src="js/getXHR.js"></script>
+    <script src="js/blog.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="minNav" style="display: none">
@@ -72,6 +65,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-md-7" style="background-color: white;" id="body">
             <div id="articles">
                 <h2 style="text-align: center;font-size: 20px!important;padding-top: 15px;"></h2>
@@ -97,6 +91,6 @@
     document.getElementById('prevPage').addEventListener('clock',function () {
         asyncRequest("GET",sessionStorage.getItem('prev_page_url'),addArticle,"test");
     });
-    asyncRequest("GET","http://blog.helloyzy.cn/articles",addArticle,"test");
+   app.asyncRequest("GET","http://blog.helloyzy.cn/articles",app.addArticle,"test");
 </script>
 </html>

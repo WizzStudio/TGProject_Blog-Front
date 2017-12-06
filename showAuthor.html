@@ -11,14 +11,7 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/showdown.js"></script>
-    <script src="js/home.js"></script>
-    <script src="js/tag.js"></script>
-    <script src="js/showTag.js"></script>
-    <script src="js/showArticle.js"></script>
-    <script src="js/response.js"></script>
-    <script src="js/author.js"></script>
-    <script src="js/showAuthor.js"></script>
-    <script src="js/getXHR.js"></script>
+    <script src="js/blog.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="minNav" style="display: none">
@@ -97,7 +90,7 @@
 </div>
 </body>
 <script>
-    asyncRequest("GET",sessionStorage.getItem('showAuthorUrl'),showAuthorMore,"test");
+    app.asyncRequest("GET",sessionStorage.getItem('showAuthorUrl'),app.showAuthorMore,"test");
 </script>
 
 </html>
