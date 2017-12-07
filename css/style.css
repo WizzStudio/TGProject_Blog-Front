@@ -1,5 +1,5 @@
     html{
-        min-height: 1000px;
+        min-height: 800px;
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
@@ -250,6 +250,7 @@
         color: #555!important;
     }
     #currentPage{
+        font-size: 12px;
         color: white;
         text-decoration: none;
         padding: 10px;
@@ -261,7 +262,8 @@
         background-color: #999;
         cursor: none;
     }
-    #nextPage{
+    #nextPage,#prevPage{
+        font-size: 12px;
         color: white;
         text-decoration: none;
         padding: 10px;
@@ -274,7 +276,7 @@
         -webkit-transition: background-color 1s;   /* Safari 和 Chrome */
         -o-transition: background-color 1s;    /* Opera */
     }
-    #nextPage:hover{
+    #nextPage:hover,#prevPage:hover{
         color: white;
         text-decoration: none;
         padding: 10px;
@@ -283,7 +285,7 @@
         background-color: black;
         cursor: pointer;
     }
-    #next{
+    #next,#prev{
         color: white;
         text-decoration: none;
         padding: 10px;

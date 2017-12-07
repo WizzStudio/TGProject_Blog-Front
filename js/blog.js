@@ -41,6 +41,13 @@ var app = (function(){
 			return http;
 		}
 	})();
+
+	var setTotalPages = function(o,url){
+		var source = JSON.parse(o.responseText);
+		var totalPages = source.last_page;
+		sessionStorage.setItem('totalPages',totalPages);
+	};
+
 	var addArticle = (function(){
 		function addArticleNode(source,url){
 			var article = document.createElement('div');	//文章
@@ -135,18 +142,69 @@ var app = (function(){
 				document.getElementById('showContent').appendChild(article);
 			}
 		}
+
 		function setPageUrl(source){
-			sessionStorage.setItem('next_page_url',source.next_page_url);
-			sessionStorage.setItem('prev_page_url',source.prev_page_url);
-			sessionStorage.setItem('first_page_url',source.first_page_url);
-			sessionStorage.setItem('last_page_url',source.last_page_url);
+			var lastPage = source.last_page;
+			var pageCurrent = sessionStorage.getItem('pageCurrent') || 1;
+
+			pageCurrent = parseInt(pageCurrent);
+			if( pageCurrent !== 1){
+				//如果当前页码不是首页
+				document.getElementById('prevPage').innerHTML = pageCurrent - 1;
+				document.getElementById('prev').style.visibility = 'visible';
+				document.getElementById('prevPage').style.visibility = 'visible';
+			}
+			else{
+				//如果当前页是第一页，则隐藏前一页的页码
+				document.getElementById('prevPage').style.visibility = 'hidden';
+				document.getElementById('prev').style.visibility = 'hidden';
+			}
+
+			document.getElementById('currentPage').innerHTML = pageCurrent;
+
+			if(pageCurrent === lastPage){
+				//如果当前页是最后一页，则隐藏下一页的页码以及向下翻页
+				document.getElementById('nextPage').style.visibility = 'hidden';
+				document.getElementById('next').style.visibility = 'hidden';
+			}
+			else{
+				document.getElementById('next').style.visibility =  'visible';
+				document.getElementById('nextPage').style.visibility = 'visible';
+				document.getElementById('nextPage').innerHTML = pageCurrent + 1;
+			}
+
+			//sessionStorage.setItem('next_page_url',source.next_page_url);
+			//sessionStorage.setItem('prev_page_url',source.prev_page_url);
+
+			
+
+			//sessionStorage.setItem('first_page_url',source.first_page_url);
+			//sessionStorage.setItem('last_page_url',source.last_page_url);
+			
+			document.getElementById('prevPage').addEventListener('click',function(){
+				sessionStorage.setItem('pageCurrent',pageCurrent - 1);	//往前翻页，更新存储的页码
+				location.reload(true);
+			});
+			document.getElementById('next').addEventListener('click',function(){
+				sessionStorage.setItem('pageCurrent',pageCurrent + 1);	//往后翻页，更新存储的页码
+				location.reload(true);
+			});
+			document.getElementById('prev').addEventListener('click',function(){
+				sessionStorage.setItem('pageCurrent',pageCurrent - 1);	//往前翻页，更新存储的页码
+				location.reload(true);
+			});
+			document.getElementById('nextPage').addEventListener('click',function(){
+				sessionStorage.setItem('pageCurrent',pageCurrent + 1);	//往后翻页，更新存储的页码
+				location.reload(true);
+			});
 		}
+
 
 		return function(o,url){
 			var source = JSON.parse(o.responseText);
 			var counts = source.data.length;
 			setPageUrl(source);
-			for(let i = counts - 1; i >= 0; i--){
+			for(let i = 0; i < counts; i++){
 				addArticleNode(source.data[i],url);
 			}
 		}
@@ -253,6 +311,9 @@ var app = (function(){
 			}
 		}
 	})();
+
+	
+
 	var showAuthorMore = (function(){
 		function showMoreInfo(source){
 			var authorName = document.createElement('div');
@@ -424,7 +485,7 @@ var app = (function(){
 		showAuthorMore: showAuthorMore,
 		showTagArticles: showTagArticles,
 		showTag: showTag,
-		showTeam: showTeam
+		showTeam: showTeam,
 	};
 })();
     //根据设备屏幕尺寸大小定制导航栏

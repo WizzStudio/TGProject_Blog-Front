@@ -71,10 +71,11 @@
                 <h2 style="text-align: center;font-size: 20px!important;padding-top: 15px;"></h2>
             </div>
             <div id="pages" class="centerPosition">
+                <span id="prev" class="fa fa-angle-left"></span>
                 <span id="prevPage"></span>
-                <a id="currentPage">1</a>
-                <a id="nextPage">2</a>
-                <i id="next" class="fa fa-angle-right"></i>
+                <span id="currentPage"></span>
+                <span id="nextPage"></span>
+                <span id="next" class="fa fa-angle-right"></span>
             </div>
             <br>
         </div>
@@ -84,8 +85,7 @@
 </div>
 </body>
 <script>
-
-
-   app.asyncRequest("GET","http://blog.helloyzy.cn/articles",app.addArticle,"test");
+    var pageCurrent = sessionStorage.getItem('pageCurrent')|| 1;
+    app.asyncRequest('GET','http://blog.helloyzy.cn/articles?page=' + pageCurrent,app.addArticle,'test');
 </script>
 </html>
