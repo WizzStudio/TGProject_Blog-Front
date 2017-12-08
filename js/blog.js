@@ -68,7 +68,7 @@ var app = (function(){
 			var button = document.createElement('button');
 			var hr = document.createElement('hr');
 			var space = document.createElement('br');
-			let showArticleUrl = url + '/'+ source.id;
+			let showArticleUrl = "http://blog.helloyzy.cn/articles/"+ source.id;
 			let showAuthorUrl =  "http://blog.helloyzy.cn/users/" + source.user_id;
 			let showTagUrl = "http://blog.helloyzy.cn/tags/" + source.tag_id;
 			title.innerHTML = source.name;
@@ -290,16 +290,21 @@ var app = (function(){
 	})();
 	var showAuthor = (function(){
 		function addAuthorNode(source,url){
-			var li = document.createElement('li');
-			var authorName = document.createElement('h4');
-			let showAuthorUrl = url + '/' + source.id;
+			var li = document.createElement('div');
+			var authorName = document.createElement('span');
+			var authorKeyWord = document.createElement('span');
 
+			let showAuthorUrl = url + '/' + source.id;
+			authorKeyWord.innerHTML ="&emsp;" +  source.key_word;
 			authorName.innerHTML = source.name;
 			authorName.addEventListener('click',function(){
 				sessionStorage.setItem('showAuthorUrl',showAuthorUrl);
 				location.href = "showAuthor.html";
 			});
+			authorName.setAttribute('name','authorName');
+			authorKeyWord.setAttribute('name','keyWord');
 			li.appendChild(authorName);
+			li.appendChild(authorKeyWord);
 			document.getElementById('authorList').appendChild(li);
 
 		}
@@ -315,23 +320,25 @@ var app = (function(){
 	
 
 	var showAuthorMore = (function(){
+		var author;
 		function showMoreInfo(source){
 			var authorName = document.createElement('div');
 			var authorEmail= document.createElement('div');
-			var authorUrl = document.createElement('div');
+			var authorImg = document.createElement('img');
 			var authorGithub = document.createElement('div');
 
 			authorName.innerHTML = source.name;
 			authorEmail.innerHTML = "Email:" + "&emsp;" + source.email;
-			authorUrl.innerHTML = "url:" + "&emsp;" + source.url;
+			authorImg.src = source.url;
+			authorImg.classList.add('img-circle');
 			authorGithub.innerHTML = "github:" + "&emsp;" + source.github;
-
+			author = source.name;
 			var authorInfoList = document.getElementById('authorInfoList');
 
+			authorInfoList.appendChild(authorImg);
 			authorInfoList.appendChild(authorName);
 			authorInfoList.appendChild(authorEmail);
 			authorInfoList.appendChild(authorGithub);
-			authorInfoList.appendChild(authorUrl);
 
 		}
 
@@ -340,12 +347,31 @@ var app = (function(){
 			var articleName = document.createElement('div');
 			var articleTag = document.createElement('div');
 			var space = document.createElement('br');
+			var tagId = source.tag.id;
+			let showArticleUrl = "http://blog.helloyzy.cn/articles/"+ source.id;
+			
+			articleTag.setAttribute('name','articleTag');
+			articleName.setAttribute('name','articleName');
 			articleTag.innerHTML = "Tag:&emsp;" + source.tag.name;
-			articleName.innerHTML = "Name:&emsp;" + source.name;
+			articleName.innerHTML =  source.name;
 
 			authorArticlesList.appendChild(articleName);
 			authorArticlesList.appendChild(articleTag);
 			authorArticlesList.appendChild(space);
+
+			articleTag.addEventListener('click',function(){
+				sessionStorage.setItem('showTagUrl','http://blog.helloyzy.cn/tags/' + source.tag_id);
+				location.href = "showTag.html";
+			});
+			articleName.addEventListener('click',function(){
+				sessionStorage.setItem('author',author);
+				sessionStorage.setItem('view',source.view);
+				sessionStorage.setItem('tagName',source.tag.name);
+				sessionStorage.setItem('showArticleUrl',showArticleUrl);
+				setTimeout(function(){
+					location.href = 'showArticle.html';
+				},800);
+			});
 
 		}
 		return function(o){
@@ -356,6 +382,7 @@ var app = (function(){
 		}
 	})();
 	var showTag = (function(){
+		var key = parseInt(4 * Math.random()) + 2;
 		function addTagNode(source,url,tagCount,index){
 			var kind = document.createElement('div');
 			var li = document.createElement('span');
@@ -366,7 +393,7 @@ var app = (function(){
 			let showTagUrl = url + '/' + source.id;
 
 			tagName.innerHTML = source.name;
-			if(index === 0){
+			if(index % key === 0){
 				li.setAttribute('id','firstTag');
 			}
 			document.getElementById('tagCount').innerHTML = tagCount;

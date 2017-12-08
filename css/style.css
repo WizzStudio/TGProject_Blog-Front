@@ -152,11 +152,15 @@
     ul{
         list-style: none!important;
     }
-    #tagList li,#authorList li{
-        color: #23527c;
+
+    #authorList span[name='authorName']{
+        padding: 10px;
+        color: #555;
+        font-weight: 300!important;
         cursor: pointer;
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-        font-size: 22px!important;
+        font-size: 16px!important;
+        line-height: 2;
     }
     #nav-header{
         background-color: #222;
@@ -205,13 +209,25 @@
         -o-transition: color 1.1s;    /* Opera */  
 
     }
+   
     #tagList li{
         font-size: 20px;
     }
-    #authorInfoList li,#authorArticlesList li{
+    #authorInfoList div{
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-        font-size: 18px;
-        padding-top: 15px;
+        font-size: 17px;
+        font-weight: 300;
+        padding: 10px;
+        line-height: 2;
+        color: #555;
+    }
+    #authorArticlesList div{
+        font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-size: 19px;
+        font-weight: 400;
+        padding: 10px;
+        line-height: 2;
+        color: #222;
     }
     .info{
         color: #555;
@@ -239,7 +255,7 @@
         color: #000;
         font-size: 16px!important;
     }
-    #Catalog ul{
+    #Authors ul{
         margin: 0px;
         padding: 0px;
     }
@@ -383,7 +399,7 @@
     span[name='tags']{
         font-size: 14px;
         color: #555;
-        font-weight: 300px;
+        font-weight: 300;
         line-height: 2;
         cursor: pointer;
         transition: color 0.5s;
@@ -394,7 +410,7 @@
     span[name='tags']:hover{
         font-size: 14px;
         color: #111;
-        font-weight: 300px;
+        font-weight: 300;
         line-height: 2;
         cursor: pointer;
     
@@ -405,7 +421,26 @@
         color: #222;
         font-size: 22px;
     }
-    
+    #authorInfoList{
+        text-align: center;
+    }
+    #authorInfoList img{
+        width: 100px;
+    }
+    #authorArticlesList div[name='articleTag']{
+        font-size: 15px;
+        color: #555;
+        font-weight: 300;
+        line-height: 2;
+        cursor: pointer;
+    }
+    #authorArticlesList div[name='articleName']{
+        font-size: 19px;
+        color: #222;
+        font-weight: 400;
+        cursor: pointer;
+        line-height: 2;
+    }
 @media screen and (max-width: 992px){
     #body div:nth-child(1){
         margin-top: 50px!important;
