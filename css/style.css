@@ -180,13 +180,26 @@
         background-color: white;
         height: 20px;
     }
-    #articleBody,#articleBody h2{
+    #articleBody{
         font-size: 13px!important;
-        line-height: 1.4;
+        line-height: 1.5;
+    }
+    #articleBody h5{
+        font-size: 13px;
+    }
+    #articleBody h4{
+        font-size: 14px;
+    }
+    #articleBody h3{
+        font-size: 15px;
+    }
+    #articleBody h2,#articleBody h1{
+        font-size: 16px;
     }
     #showArticle span{
         font-size: 13px!important;
     }
+
     #showTagList{
         font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
         font-size: 15px!important;
@@ -441,6 +454,19 @@
         cursor: pointer;
         line-height: 2;
     }
+    #articleContent div h1 {
+  font-size: 22px; }
+#articleContent div h2{
+  font-size: 21px; }
+  #articleContent div h3 {
+  font-size: 20px; }
+ #articleContent div h4{
+  font-size: 19px; }
+ #articleContent div h5 {
+  font-size: 18px; }
+
+/*# sourceMappingURL=test.css.map */
+
 @media screen and (max-width: 992px){
     #body div:nth-child(1){
         margin-top: 50px!important;
