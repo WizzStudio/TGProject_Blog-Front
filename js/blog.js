@@ -68,9 +68,9 @@ var app = (function(){
 			var button = document.createElement('button');
 			var hr = document.createElement('hr');
 			var space = document.createElement('br');
-			let showArticleUrl = "http://blog.helloyzy.cn/articles/"+ source.id;
-			let showAuthorUrl =  "http://blog.helloyzy.cn/users/" + source.user_id;
-			let showTagUrl = "http://blog.helloyzy.cn/tags/" + source.tag_id;
+			let showArticleUrl = "http://blogadmin.helloyzy.cn/articles/"+ source.id;
+			let showAuthorUrl =  "http://blogadmin.helloyzy.cn/users/" + source.user_id;
+			let showTagUrl = "http://blogadmin.helloyzy.cn/tags/" + source.tag_id;
 			title.innerHTML = source.name;
 			title.classList.add('centerPosition');
 			article.appendChild(title);
@@ -229,8 +229,8 @@ var app = (function(){
 			var infoAuthor = document.createElement('span');
 			var content = document.createElement('div');
 			var hr = document.createElement('hr');
-			let showAuthorUrl =  "http://blog.helloyzy.cn/users/" + source.user_id;
-			let showTagUrl = "http://blog.helloyzy.cn/tags/" + source.tag_id;
+			let showAuthorUrl =  "http://blogadmin.helloyzy.cn/users/" + source.user_id;
+			let showTagUrl = "http://blogadmin.helloyzy.cn/tags/" + source.tag_id;
 
 			infoCatologIcon.classList.add('fa','fa-fw','fa-tags');
 			title.innerHTML = source.name;
@@ -348,7 +348,7 @@ var app = (function(){
 			var articleTag = document.createElement('div');
 			var space = document.createElement('br');
 			var tagId = source.tag.id;
-			let showArticleUrl = "http://blog.helloyzy.cn/articles/"+ source.id;
+			let showArticleUrl = "http://blogadmin.helloyzy.cn/articles/"+ source.id;
 			
 			articleTag.setAttribute('name','articleTag');
 			articleName.setAttribute('name','articleName');
@@ -360,7 +360,7 @@ var app = (function(){
 			authorArticlesList.appendChild(space);
 
 			articleTag.addEventListener('click',function(){
-				sessionStorage.setItem('showTagUrl','http://blog.helloyzy.cn/tags/' + source.tag_id);
+				sessionStorage.setItem('showTagUrl','http://blogadmin.helloyzy.cn/tags/' + source.tag_id);
 				location.href = "showTag.html";
 			});
 			articleName.addEventListener('click',function(){
@@ -424,8 +424,8 @@ var app = (function(){
 			var articleAhthor = document.createElement('span');
 			var showTagList = document.getElementById('showTagList');
 
-			var showArticleUrl = "http://blog.helloyzy.cn/articles/" + source.id;
-			var showAuthorUrl = "http://blog.helloyzy.cn/users/" + source.user.id;
+			var showArticleUrl = "http://blogadmin.helloyzy.cn/articles/" + source.id;
+			var showAuthorUrl = "http://blogadmin.helloyzy.cn/users/" + source.user.id;
 
 			articleAhthor.setAttribute('name','articleAuthor');
 			articleTitle.setAttribute('name','articleTitle');
